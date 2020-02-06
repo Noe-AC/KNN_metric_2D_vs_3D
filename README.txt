@@ -51,8 +51,8 @@ Sont aussi jointes quatre images produites par matplotlib :
 
 		RÉFÉRENCES
 
-• [1] : Chaitanya Gokhale, Kaggle, country to continent, https:// www.kaggle.com/ statchaitya/ country-to-continent.
-• [2] : Max Mind, Kaggle, world cities database, https://www. kaggle.com/max-mind/world-cities-database.
+• [1] : Chaitanya Gokhale, Kaggle, country to continent, https://www.kaggle.com/statchaitya/country-to-continent.
+• [2] : Max Mind, Kaggle, world cities database, https://www.kaggle.com/max-mind/world-cities-database.
 • [3] : https://dms.umontreal.ca/~aubincn/Documents/Beamer/2020-02-05_Beamer_BNC.pdf
 
 ######################################################################
