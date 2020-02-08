@@ -29,10 +29,10 @@ CREATE TABLE cities_full
 );
 
 -- On importe le fichier worldcitiespop.csv dans Postgres :
-\copy cities_full FROM '//Users/NAC/Desktop/cities/world-cities-database/worldcitiespop.csv' DELIMITER ',' CSV HEADER;
+\copy cities_full FROM '//Users/Desktop/cities/world-cities-database/worldcitiespop.csv' DELIMITER ',' CSV HEADER;
 
 -- Pour exporter les colonnes (region, latitude, longitude) de la table "cities_full" dans le fichier "cities.csv" :
--- \copy (SELECT region,latitude,longitude FROM cities_full) to '//Users/NAC/Desktop/cities/Python/cities.csv' CSV HEADER;
+-- \copy (SELECT region,latitude,longitude FROM cities_full) to '//Users/Desktop/cities/Python/cities.csv' CSV HEADER;
 -- ok, mais je ne veux pas juste ça.
 
 ------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ CREATE TABLE country_continent
 );
 
 -- On importe le fichier worldcitiespop.csv dans Postgres :
-\copy country_continent FROM '//Users/NAC/Desktop/cities/countryContinent/countryContinent.csv' DELIMITER ',' CSV HEADER ENCODING 'WIN1252';
+\copy country_continent FROM '//Users/Desktop/cities/countryContinent/countryContinent.csv' DELIMITER ',' CSV HEADER ENCODING 'WIN1252';
 
 -- Pour voir la table :
 SELECT * FROM country_continent;
@@ -398,7 +398,7 @@ Je peux maintenant l'exporter dans un fichier CSV
 ------------------------------------------------------------------------------
 
 -- On exporte le tableau vers le fichier CSV
-\copy (SELECT CASE WHEN (continent LIKE 'Americas') THEN 0 WHEN (continent LIKE 'Europe') THEN 1 WHEN (continent LIKE 'Africa') THEN 2 WHEN (continent LIKE 'Asia') THEN 3 WHEN (continent LIKE 'Oceania') THEN 4 END, phi, theta, cos(theta)*cos(phi) AS x, cos(theta)*sin(phi) AS y, sin(theta) AS z FROM (SELECT t1.continent AS continent, t2.latitude AS latitude, t2.longitude AS longitude, pi()*(t2.latitude)/180 AS theta, pi()*(t2.longitude)/180 AS phi FROM (SELECT country AS country, continent AS continent, LOWER(code_2) AS code_2 FROM country_continent WHERE continent NOT LIKE '') AS t1 INNER JOIN (SELECT * FROM cities_full WHERE population>200000) AS t2 ON t1.code_2=t2.country) AS t3) to '//Users/NAC/Desktop/cities/Python/cities.csv' CSV HEADER;
+\copy (SELECT CASE WHEN (continent LIKE 'Americas') THEN 0 WHEN (continent LIKE 'Europe') THEN 1 WHEN (continent LIKE 'Africa') THEN 2 WHEN (continent LIKE 'Asia') THEN 3 WHEN (continent LIKE 'Oceania') THEN 4 END, phi, theta, cos(theta)*cos(phi) AS x, cos(theta)*sin(phi) AS y, sin(theta) AS z FROM (SELECT t1.continent AS continent, t2.latitude AS latitude, t2.longitude AS longitude, pi()*(t2.latitude)/180 AS theta, pi()*(t2.longitude)/180 AS phi FROM (SELECT country AS country, continent AS continent, LOWER(code_2) AS code_2 FROM country_continent WHERE continent NOT LIKE '') AS t1 INNER JOIN (SELECT * FROM cities_full WHERE population>200000) AS t2 ON t1.code_2=t2.country) AS t3) to '//Users/Desktop/cities/Python/cities.csv' CSV HEADER;
 
 
 
